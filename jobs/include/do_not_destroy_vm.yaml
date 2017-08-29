@@ -1,0 +1,6 @@
+choice:
+  name: do_not_destroy_vm
+  choices:
+      - 'no'
+      - 'yes'
+  description: "Leave the VMs running after the build"

@@ -1,0 +1,32 @@
+- job:
+    name: build
+    description: 'View: MRM-Build. This job builds MRM'
+    parameters: 
+      - !include: './jobs/include/source.yaml'
+      - !include: './jobs/include/boxes_all_incl.yaml'
+      - !include: './jobs/include/target.yaml'
+      - !include: './jobs/include/do_not_destroy_vm.yaml'
+      - !include: './jobs/include/repo_path.yaml'
+      - !include: './jobs/include/try_already_running.yaml'
+      - !include: './jobs/include/slave.yaml'
+    properties:
+      - throttle:
+          option: project
+          max-per-node: 5
+          max-total: 25
+          enabled: true
+    scm:
+      - git:
+          url: !include: './jobs/include/mrm_repo.yaml'
+          branches:
+            - ${scm_source}
+    builders:
+      - shell: 
+          '$HOME/mrm-jenkins/prepare_and_build.sh'
+    publishers:
+      - !include: './jobs/include/mail_build.yaml'
+      - !include: './jobs/include/call_cleanup_at_build.yaml'
+    wrappers:
+      - !include: './jobs/include/workspace-cleanup.yaml'
+      - !include: './jobs/include/timeout.yaml'
+    concurrent: true
