@@ -16,7 +16,7 @@ else
     sudo zypper -n install wget git -y
     sudo zypper -n install --type pattern Basis-Devel
     sudo zypper -n install ruby-devel rpm-build rubygems -y
-    gem install --no-ri --no-rdoc fpm
+    sudo gem install --no-ri --no-rdoc fpm
   else
     echo "We need yum here"
     sudo yum install wget git -y
