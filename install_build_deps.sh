@@ -6,6 +6,7 @@ if [ $? == 0 ]
 then
   echo "DEB-based distro"
   sudo apt-get install -y --force-yes wget git ruby ruby-dev rubygems build-essential
+  sudo gem install --no-ri --no-rdoc fpm
 else
   echo "RPM-based distro"
   command -v yum
@@ -15,14 +16,16 @@ else
     sudo zypper -n install wget git -y
     sudo zypper -n install --type pattern Basis-Devel
     sudo zypper -n install ruby-devel rpm-build rubygems -y
+    gem install --no-ri --no-rdoc fpm
   else
     echo "We need yum here"
     sudo yum install wget git -y
     sudo yum groupinstall 'Development Tools' -y
     sudo yum install ruby-devel rpm-build rubygems -y
+    gem install --no-ri --no-rdoc fpm
   fi
 fi
-gem install --no-ri --no-rdoc fpm
+
 
 #sudo apt-get install  -y --force-yes wget git
 #sudo zypper -n install wget git
