@@ -74,9 +74,9 @@ fi
 echo "copying binaries"
 mkdir -p ~/repository/$target/$image/mrm/
 scp $scpopt $sshuser@$IP:./go/bin/* ~/repository/$target/$image/mrm/
-scp $scpopt $sshuser@$IP:./go/src/github.com/mariadb-corporation/mrm/*.gz ~/repository/$target/$image/mrm/
-scp $scpopt $sshuser@$IP:./go/src/github.com/mariadb-corporation/mrm/*.deb ~/repository/$target/$image/mrm/
-scp $scpopt $sshuser@$IP:./go/src/github.com/mariadb-corporation/mrm/*.rpm ~/repository/$target/$image/mrm/
+scp $scpopt $sshuser@$IP:./go/src/github.com/mariadb-corporation/mrm/*.gz ~/repository/$target/mrm/$image/
+scp $scpopt $sshuser@$IP:./go/src/github.com/mariadb-corporation/mrm/*.deb ~/repository/$target/mrm/$image/
+scp $scpopt $sshuser@$IP:./go/src/github.com/mariadb-corporation/mrm/*.rpm ~/repository/$target/mrm/$image/
 
 echo "package building for $target done!"
 
