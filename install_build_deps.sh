@@ -5,6 +5,7 @@ command -v apt-get
 if [ $? == 0 ]
 then
   echo "DEB-based distro"
+  sudo apt-get update
   sudo apt-get install -y --force-yes wget git build-essential
   sudo apt-get install -y --force-yes ruby ruby-dev 
   sudo apt-get install -y --force-yes rubygems
@@ -15,12 +16,14 @@ else
   if [ $? != 0 ]
   then
     echo "We need zypper here"
+    sudo zypper clean -a
     sudo zypper -n install wget git
     sudo zypper -n install --type pattern Basis-Devel
     sudo zypper -n install ruby-devel rpm-build rubygems
     sudo gem install --no-ri --no-rdoc fpm
   else
     echo "We need yum here"
+    sudo yum clean all
     sudo yum install wget git -y
     sudo yum groupinstall 'Development Tools' -y
     sudo yum install ruby-devel rpm-build rubygems -y
