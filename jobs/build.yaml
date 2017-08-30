@@ -1,5 +1,5 @@
 - job:
-    name: build_mrm
+    name: mrm_build
     description: 'View: MRM-Build. This job builds MRM'
     parameters: 
       - !include: './jobs/include/source.yaml'
