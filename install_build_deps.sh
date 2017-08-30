@@ -13,9 +13,9 @@ else
   if [ $? != 0 ]
   then
     echo "We need zypper here"
-    sudo zypper -n install wget git -y
+    sudo zypper -n install wget git
     sudo zypper -n install --type pattern Basis-Devel
-    sudo zypper -n install ruby-devel rpm-build rubygems -y
+    sudo zypper -n install ruby-devel rpm-build rubygems
     sudo gem install --no-ri --no-rdoc fpm
   else
     echo "We need yum here"
