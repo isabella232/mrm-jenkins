@@ -23,6 +23,8 @@ else
     sudo gem install --no-ri --no-rdoc fpm
   else
     echo "We need yum here"
+    optional_repo_name=`grep -h  -i server-optional /etc/yum.repos.d/* | sed "s/\[//" |sed "s/\]//"`
+    sudo yum-config-manager --enable $optional_repo_name
     sudo yum clean all
     sudo yum install wget git -y
     sudo yum groupinstall 'Development Tools' -y
