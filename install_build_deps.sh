@@ -33,9 +33,12 @@ else
   fi
 fi
 
-
-#sudo apt-get install  -y --force-yes wget git
-#sudo zypper -n install wget git
+# This durty hack is done to fix 'fpm.ruby2.1' problem
+fpm_exec_name=`ls -1 /usr/bin/ | grep fpm`
+if [ "$fpm_exec_name" != "fpm" ] ; then
+  echo "fpm executable name is $fpm_exec_name, creating symlink"
+  sudo ln -s /usr/bin/"$fpm_exec_name" /usr/bin/fpm
+fi
 
 echo "Download Golang"
 go_binary="go1.9.linux-amd64.tar.gz"
