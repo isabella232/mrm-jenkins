@@ -5,7 +5,9 @@ command -v apt-get
 if [ $? == 0 ]
 then
   echo "DEB-based distro"
-  sudo apt-get install -y --force-yes wget git ruby ruby-dev rubygems build-essential
+  sudo apt-get install -y --force-yes wget git build-essential
+  sudo apt-get install -y --force-yes ruby ruby-dev 
+  sudo apt-get install -y --force-yes rubygems
   sudo gem install --no-ri --no-rdoc fpm
 else
   echo "RPM-based distro"
@@ -22,7 +24,7 @@ else
     sudo yum install wget git -y
     sudo yum groupinstall 'Development Tools' -y
     sudo yum install ruby-devel rpm-build rubygems -y
-    gem install --no-ri --no-rdoc fpm
+    sudo gem install --no-ri --no-rdoc fpm
   fi
 fi
 
