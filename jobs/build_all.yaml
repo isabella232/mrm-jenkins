@@ -1,0 +1,40 @@
+- job:
+    name: mrm_build_all
+    description: 'View: MRM. This job builds Maxscale'
+    project-type: matrix
+    execution-strategy:
+      sequential: false
+    axes:
+      - axis:
+          type: user-defined
+          name: box
+          values:
+            !include: './jobs/include/boxes.yaml'
+    parameters:
+      - !include: './jobs/include/source.yaml'
+      - !include: './jobs/include/target.yaml'
+      - !include: './jobs/include/do_not_destroy_vm.yaml'
+      - !include: './jobs/include/repo_path.yaml'
+      - !include: './jobs/include/try_already_running.yaml'
+      - !include: './jobs/include/slave.yaml'
+    properties:
+      - throttle:
+          matrix-configs: true
+          matrix-builds: false
+          option: category
+          categories:
+            - cat1
+          enabled: true
+    scm:
+      - git:
+          url: !include './jobs/include/mrm_repo.yaml'
+          branches:
+            - ${scm_source}
+    builders:
+      - !include: './jobs/include/build_all/call_mrm_build.yaml'
+    publishers:
+      - !include: './jobs/include/mail_summary.yaml'
+      - !include: './jobs/include/parametrized_triggerred_subjobs_killer/publisher-trigger-parametrized-builds.yaml'
+    wrappers:
+      - !include: './jobs/include/workspace-cleanup.yaml'
+    concurrent: false

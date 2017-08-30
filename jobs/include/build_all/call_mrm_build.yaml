@@ -1,0 +1,14 @@
+trigger-builds:
+  - project: 'mrm_build'
+    same-node: true
+    block: true
+    predefined-parameters: |
+      box=$box
+      scm_source=$scm_source
+      target=$target
+      cmake_flags=$cmake_flags
+      do_not_destroy_vm=$do_not_destroy_vm
+      repo_path=$repo_path
+      try_already_running=no
+      slave_name=$slave_name
+
