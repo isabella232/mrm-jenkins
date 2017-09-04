@@ -8,7 +8,7 @@
       		"name": "$product",
 		"version": "$version",
                 "cnf_template" : "server1.cnf",
-                "cnf_template_path": "~/mrm-jenkins/cnf"
+                "cnf_template_path": "~/mrm-jenkins/cnf/mariadb/"
 	}
 
   },
@@ -22,7 +22,7 @@
                 "name": "$product",
                 "version": "$version",
                 "cnf_template" : "server2.cnf",
-                "cnf_template_path": "~/mrm-jenkins/cnf"
+                "cnf_template_path": "~/mrm-jenkins/cnf/mariadb/"
         }
   },
 
@@ -35,7 +35,7 @@
                 "name": "$product",
                 "version": "$version",
                 "cnf_template" : "server3.cnf",
-                "cnf_template_path": "~/mrm-jenkins/cnf"
+                "cnf_template_path": "~/mrm-jenkins/cnf/mariadb/"
         }
   },
 
@@ -48,7 +48,7 @@
                 "name": "$product",
                 "version": "$version",
                 "cnf_template" : "server4.cnf",
-                "cnf_template_path": "~/mrm-jenkins/cnf"
+                "cnf_template_path": "~/mrm-jenkins/cnf/mariadb/"
         }
   },
 
