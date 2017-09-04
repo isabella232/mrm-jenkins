@@ -66,6 +66,6 @@
   {
         "hostname" : "maxscale",
         "box" : "$box",
-        "memory_size" : "2048",
+        "memory_size" : "2048"
   }
 }
