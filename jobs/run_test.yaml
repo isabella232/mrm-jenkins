@@ -31,8 +31,6 @@
       - !include: './jobs/include/build_parser/inject_initial_env.yaml'
       - !include: './jobs/include/build_parser/run_test_and_collect.yaml'
       - !include: './jobs/include/build_parser/parse_build_log.yaml'
-      - !include: './jobs/include/build_parser/inject_build_results.yaml'
-
     publishers:
       - !include: './jobs/include/build_parser_mail_subject_with_name.yaml'
       - !include: './jobs/include/call_cleanup.yaml'
