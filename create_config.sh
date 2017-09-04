@@ -12,7 +12,7 @@ echo "template: $template"
 
 provider=`$HOME/mdbci/mdbci show provider $box --silent 2> /dev/null`
 template_raw="$HOME/mrm-jenkins/templates/template.$provider.json"
-cp "$HOME/mrm-jenkins/template.$provider.json" template_tmp
+cp "$template_raw" template_tmp
 eval "cat <<EOF
 $(<template_tmp)
 EOF" > "$MDBCI_VM_PATH/$name.json"
