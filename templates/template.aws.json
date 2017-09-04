@@ -2,7 +2,7 @@
   "node_000" :
   {
         "hostname" : "node000",
-        "box" : "centos_7_libvirt",
+        "box" : "centos_7_aws",
         "memory_size" : "2048",
 	"product" : {
       		"name": "$product",
@@ -16,7 +16,7 @@
   "node_001" :
   {
         "hostname" : "node001",
-        "box" : "centos_7_libvirt",
+        "box" : "centos_7_aws",
         "memory_size" : "2048",
         "product" : {
                 "name": "$product",
@@ -29,7 +29,7 @@
   "node_002" :
   {
         "hostname" : "node002",
-        "box" : "centos_7_libvirt",
+        "box" : "centos_7_aws",
         "memory_size" : "2048",
         "product" : {
                 "name": "$product",
@@ -42,7 +42,7 @@
   "node_003" :
   {
         "hostname" : "node003",
-        "box" : "centos_7_libvirt",
+        "box" : "centos_7_aws",
         "memory_size" : "2048",
         "product" : {
                 "name": "$product",
@@ -55,7 +55,7 @@
   "maxscale" :
   {
         "hostname" : "maxscale",
-        "box" : "centos_7_libvirt",
+        "box" : "centos_7_aws",
         "memory_size" : "2048",
         "product" : {
                 "name": "maxscale"
