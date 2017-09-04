@@ -8,12 +8,12 @@ export target=`echo $target | sed "s/?//g"`
 export name=`echo $name | sed "s/?//g"`
 export value=`echo $value | sed "s/?//g"`
 
-. ~/build-scripts/test/configure_log_dir.sh
+. ~/mrm-jenkins/configure_log_dir.sh
 
 export dir=`pwd`
 export repo_dir=$dir/repo.d/
 
-~/build-scripts/test/create_config.sh
+~/mrm-jenkins/create_config.sh
 res=$?
 
 
