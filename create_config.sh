@@ -3,7 +3,8 @@ set -x
 cd $dir
 export MDBCI_VM_PATH=$HOME/vms; mkdir -p $MDBCI_VM_PATH
 ~/mdbci/repository-config/generate_all.sh repo.d
-~/mdbci/repository-config/maxscale-ci.sh $maxscale_target repo.d $ci_url_suffix
+# temporal solution - TODO: change 'product: maxscale version:' and add it to generate_all
+~/mdbci/repository-config/maxscale-ci.sh $maxscale_target repo.d mariadb-maxscale
 
 export repo_dir=$dir/repo.d/
 
