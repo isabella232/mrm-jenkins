@@ -23,8 +23,7 @@
           enabled: true
     scm:
         - git:
-            # TODO parametrize this url
-            url: https://github.com/mariadb-corporation/maxscale.git
+            url: !include: './jobs/include/mrm_repo.yaml'
             branches:
                 - $test_branch
     builders:
