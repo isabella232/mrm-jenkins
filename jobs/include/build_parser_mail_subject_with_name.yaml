@@ -1,0 +1,11 @@
+email-ext:
+  recipients: !include-raw: "./jobs/include/mail_recipients.yaml"
+  reply-to: $DEFAULT_REPLYTO
+  content-type: default
+  subject: $DEFAULT_SUBJECT ($name)
+  body: !include-raw: "./jobs/include/build_parser_email_body" 
+  attach-build-log: false
+  always: true
+  send-to:
+    - recipients
+    - requester

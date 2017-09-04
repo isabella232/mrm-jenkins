@@ -1,0 +1,5 @@
+choice:
+  name: version
+  choices:
+      !include: './jobs/include/versions.yaml'
+

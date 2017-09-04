@@ -1,0 +1,43 @@
+- job:
+    name: mrm_run_test
+    description: 'View: MRM. This job perform integration testing of MRM'
+    parameters:
+        - !include: './jobs/include/boxes_all_incl.yaml'
+        - !include: './jobs/include/products_incl.yaml'
+        - !include: './jobs/include/versions_incl.yaml'
+        - !include: './jobs/include/do_not_destroy_vm.yaml'
+        - !include: './jobs/include/name.yaml'
+        - !include: './jobs/include/target.yaml'
+        - !include: './jobs/include/maxscale_target.yaml'
+        - !include: './jobs/include/test_set.yaml'
+        - !include: './jobs/include/ci_url.yaml'
+        - !include: './jobs/include/ci_url_suffix.yaml'
+        - !include: './jobs/include/logs_dir.yaml'
+        - !include: './jobs/include/test_branch.yaml'
+        - !include: './jobs/include/slave.yaml'
+    properties:
+      - throttle:
+          option: project
+          max-per-node: 5
+          max-total: 25
+          enabled: true
+    scm:
+        - git:
+            # TODO parametrize this url
+            url: https://github.com/mariadb-corporation/maxscale.git
+            branches:
+                - $test_branch
+    builders:
+      - !include: './jobs/include/build_parser/create_env_vars.yaml'
+      - !include: './jobs/include/build_parser/inject_initial_env.yaml'
+      - !include: './jobs/include/build_parser/run_test_and_collect.yaml'
+      - !include: './jobs/include/build_parser/parse_build_log.yaml'
+      - !include: './jobs/include/build_parser/inject_build_results.yaml'
+
+    publishers:
+      - !include: './jobs/include/build_parser_mail_subject_with_name.yaml'
+      - !include: './jobs/include/call_cleanup.yaml'
+    wrappers:
+      - !include: './jobs/include/workspace-cleanup.yaml'
+      - !include: './jobs/include/timeout.yaml'
+    concurrent: true

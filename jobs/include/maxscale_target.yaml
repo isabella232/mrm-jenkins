@@ -1,0 +1,4 @@
+string:
+  name: target
+  default: !include: './jobs/include/default_maxscale_target.yaml'
+  description: 'The name of Maxscale CI repo'
