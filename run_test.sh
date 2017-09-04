@@ -19,7 +19,7 @@ res=$?
 
 echo "Loading VMs parameters to variables"
 set -a
-. $MDBCI_VM_PATH/$name.network_config
+. $MDBCI_VM_PATH/${name}_network_config
 set +a
 
 echo "Setting up replication"
