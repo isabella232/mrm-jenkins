@@ -25,7 +25,7 @@ do
 	ssh -i $sshkey -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $user@$IP "sudo service mysql start" 
 
 	sleep 15
-        scp -i $sshkey -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $scr_dir/create_*_user.sql $user@$IP://home/$user/
+        scp -i $sshkey -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no ~/mrm-jenkins/setup_repl/create_*_user.sql $user@$IP://home/$user/
         ssh -i $sshkey -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $user@$IP "sudo mysql < /home/$user/create_repl_user.sql"
         ssh -i $sshkey -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $user@$IP "sudo mysql < /home/$user/create_skysql_user.sql"
 done
