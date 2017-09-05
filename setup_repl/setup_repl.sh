@@ -2,7 +2,7 @@
 
 set -x
 
-export node_N=4
+export node_N=`cat $MDBCI_VM_PATH/${name}_network_config | grep "node_..._network" | wc -l`
 
 x=`expr $node_N - 1`
 for i in $(seq 0 $x)
