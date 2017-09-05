@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# $1 - "debug" means do not install Maxscale
+set -x
+
 ulimit -n
 rm -rf LOGS
 export MDBCI_VM_PATH=$HOME/vms; mkdir -p $MDBCI_VM_PATH
@@ -26,13 +27,13 @@ echo "Setting up replication"
 ~/mrm-jenkins/setup_repl/setup_repl.sh
 
 echo "Generating maxscale.cnf"
-cp ~/mdbci-jenkins/cnf/replication.cnf maxscale.cnf.tmp
+cp ~/mdbci-jenkins/cnf/maxscale/replication.cnf maxscale.cnf.tmp
 eval "cat <<EOF
 $(maxscale.cnf.tmp)
 EOF" > maxscale.cnf
 
 export scpopt="-i $maxscale_keyfile -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o ConnectTimeout=120 "
-export sshopt="$scpopt $maxscale_whoami@$maxscale_network"
+export sshopt="ssh $scpopt $maxscale_whoami@$maxscale_network"
 
 echo "Copying maxscale.cnf to VM"
 scp $scpopt maxscale.cnf $maxscale_whoami@$maxscale_network:~/
