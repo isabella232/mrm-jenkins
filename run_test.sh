@@ -33,7 +33,7 @@ fi
 echo "Generating maxscale.cnf"
 cp ~/mrm-jenkins/cnf/maxscale/replication.cnf maxscale.cnf.tmp
 eval "cat <<EOF
-$(maxscale.cnf.tmp)
+$(<maxscale.cnf.tmp)
 EOF" > maxscale.cnf
 
 export scpopt="-i $maxscale_keyfile -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o ConnectTimeout=120 "
