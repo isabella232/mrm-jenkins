@@ -25,6 +25,10 @@ set +a
 
 echo "Setting up replication"
 ~/mrm-jenkins/setup_repl/setup_repl.sh
+if [ $? != 0 ] ; then
+	echo "Replication setup failed"
+	res=1
+fi
 
 echo "Generating maxscale.cnf"
 cp ~/mrm-jenkins/cnf/maxscale/replication.cnf maxscale.cnf.tmp
@@ -38,6 +42,10 @@ export sshopt="ssh $scpopt $maxscale_whoami@$maxscale_network"
 echo "Copying maxscale.cnf to VM"
 scp $scpopt maxscale.cnf $maxscale_whoami@$maxscale_network:~/
 $sshopt 'sudo cp ~/maxscale.cnf /etc/'
+if [ $? != 0 ] ; then
+	echo "Maxscale.cnf copying failed"
+	res=1
+fi
 
 cd $MDBCI_VM_PATH/$name
 if [ "$do_not_destroy_vm" != "yes" ] ; then
@@ -45,5 +53,6 @@ if [ "$do_not_destroy_vm" != "yes" ] ; then
         rm ~/vagrant_lock
 	echo "clean  up done!"
 fi
+
 cd $dir
 exit $res

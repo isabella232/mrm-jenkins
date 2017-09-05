@@ -38,4 +38,8 @@ do
         IP=${!IP_var}
 
 	echo "CHANGE MASTER TO MASTER_HOST='$node_000_network',MASTER_USER='repl',MASTER_PASSWORD='repl',MASTER_PORT=3306,MASTER_USE_GTID=Slave_pos; START SLAVE;" | mysql -uskysql -pskysql -P 3306 -h $IP 
+	if [ $? != 0 ] ; then
+		echo "Error configuring slave, node_$num"
+		exit 1
+	fi
 done

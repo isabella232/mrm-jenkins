@@ -38,8 +38,11 @@ echo "running vagrant up $provider"
 $HOME/mdbci/mdbci up $name --attempts 3
 if [ $? != 0 ]; then
 	echo "Error creating configuration"
+	rm ~/vagrant_lock
 	exit 1
 fi
 
 cp ~/build-scripts/team_keys .
-$HOME/mdbci/mdbci  public_keys --key team_keys $name
+$HOME/mdbci/mdbci public_keys --key team_keys $name
+
+rm ~/vagrant_lock
