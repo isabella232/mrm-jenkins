@@ -27,7 +27,7 @@ echo "Setting up replication"
 ~/mrm-jenkins/setup_repl/setup_repl.sh
 
 echo "Generating maxscale.cnf"
-cp ~/mdbci-jenkins/cnf/maxscale/replication.cnf maxscale.cnf.tmp
+cp ~/mrm-jenkins/cnf/maxscale/replication.cnf maxscale.cnf.tmp
 eval "cat <<EOF
 $(maxscale.cnf.tmp)
 EOF" > maxscale.cnf
