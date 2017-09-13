@@ -22,7 +22,6 @@ ssh $sshopt "mkdir -p $work_dir"
 
 cp ~/mrm-jenkins/install_build_deps.sh .
 export install_script="install_build_deps.sh"
-export build_script="build_linux_amd64.sh"
 
 rsync -avz  --progress --delete -e "ssh $scpopt" ./ $sshuser@$IP:$work_dir/ 
 if [ $? -ne 0 ] ; then
@@ -54,17 +53,15 @@ then
     fi
 
     dir1=`pwd`
-    #cd ~/mdbci
+
     $HOME/mdbci/mdbci snapshot take --path-to-nodes $box --snapshot-name clean
     cd $dir1
 else
 	echo "already running VM, not installing deps"
 fi
 
-#echo "run build on $image"
-#ssh $sshopt "$remote_build_cmd cd go/src/github.com/mariadb-corporation/mrm;"  'export PATH=$PATH:/usr/local/go/bin;' "./$build_script"
-echo "Build and packaging"
-ssh $sshopt '$remote_build_cmd cd go/src/github.com/mariadb-corporation/mrm;  export PATH=$PATH:/usr/local/go/bin:$HOME/.local/bin:$HOME/bin; echo $PATH; ./package_linux_amd64.sh'
+echo "run build on $image"
+ssh $sshopt "$remote_build_cmd cd go/src/github.com/mariadb-corporation/mrm;"  'export PATH=$PATH:/usr/local/go/bin;' "go build"
 if [ $? -ne 0 ] ; then
         echo "Error build on $image"
         exit 4

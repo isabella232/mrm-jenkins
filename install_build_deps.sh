@@ -7,9 +7,9 @@ then
   echo "DEB-based distro"
   sudo apt-get update
   sudo apt-get install -y --force-yes wget git build-essential
-  sudo apt-get install -y --force-yes ruby ruby-dev 
-  sudo apt-get install -y --force-yes rubygems
-  sudo gem install --no-ri --no-rdoc fpm
+#  sudo apt-get install -y --force-yes ruby ruby-dev 
+#  sudo apt-get install -y --force-yes rubygems
+#  sudo gem install --no-ri --no-rdoc fpm
 else
   echo "RPM-based distro"
   command -v yum
@@ -19,8 +19,8 @@ else
     sudo zypper clean -a
     sudo zypper -n install wget git
     sudo zypper -n install --type pattern Basis-Devel
-    sudo zypper -n install ruby-devel rpm-build rubygems
-    sudo gem install --no-ri --no-rdoc fpm
+#    sudo zypper -n install ruby-devel rpm-build rubygems
+#    sudo gem install --no-ri --no-rdoc fpm
   else
     echo "We need yum here"
     optional_repo_name=`grep -h  -i server-optional /etc/yum.repos.d/* | sed "s/\[//" |sed "s/\]//"`
@@ -28,8 +28,8 @@ else
     sudo yum clean all
     sudo yum install wget git -y
     sudo yum groupinstall 'Development Tools' -y
-    sudo yum install ruby-devel rpm-build rubygems -y
-    sudo gem install --no-ri --no-rdoc fpm
+ #   sudo yum install ruby-devel rpm-build rubygems -y
+ #   sudo gem install --no-ri --no-rdoc fpm
   fi
 fi
 
