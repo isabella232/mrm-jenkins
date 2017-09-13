@@ -50,6 +50,13 @@ sudo tar -C /usr/local -xzf "$go_binary"
 
 export PATH=$PATH:/usr/local/go/bin
 
-echo "go install mrm"
+echo "go get"
 cd go
-go install github.com/mariadb-corporation/mrm
+#go install github.com/mariadb-corporation/mrm
+go get github.com/go-sql-driver/mysql
+go get github.com/jmoiron/sqlx
+go get github.com/juju/errors
+go get github.com/sirupsen/logrus
+go get gonum.org/v1/gonum/graph/simple
+go get gonum.org/v1/gonum/graph/topo
+
