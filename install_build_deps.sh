@@ -59,4 +59,5 @@ go get github.com/juju/errors
 go get github.com/sirupsen/logrus
 go get gonum.org/v1/gonum/graph/simple
 go get gonum.org/v1/gonum/graph/topo
-
+go get github.com/spf13/cobra
+go get github.com/spf13/viper
